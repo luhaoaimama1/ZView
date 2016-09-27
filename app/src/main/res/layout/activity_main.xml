@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="zone.com.zview.MainActivity">
+
+    <com.zone.view.ZSeekBarUnslide
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:max="100"
+        android:thumb="@drawable/thumb"
+        android:progress="40"
+        android:progressDrawable="@drawable/progressbar_z_hori"
+        android:secondaryProgress="70" />
+</LinearLayout>
