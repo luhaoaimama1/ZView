@@ -1,14 +1,11 @@
-package zone.com.zviews;
-
+package zone.com.zview;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
-
 import com.zone.adapter.QuickAdapter;
 import com.zone.adapter.callback.Helper;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
