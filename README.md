@@ -1,6 +1,7 @@
 # ZView
 >本项目主要是为了搜集 `常用的` `小型的` `稳定的` `自定义View`
 >Ps:虽然暂时还很小~ 但是架不住收集的时间长啊
+>如果涉及什么的问题。请联系我。我会做出相应修改；
 
 ### JicPack
 Add it in your root build.gradle at the end of repositories:
@@ -42,7 +43,7 @@ Step 2. Add the dependency
 ##com.zone.view.label包
 | 名字 | 功能  | 优点|
 | :------------: |:---------------:| :-----:|
-| LabelView | `多个图片` `旋转` `缩放` `位移` `生成合成后的位图` | 很久以前封装的labelView 没勇气重构了~ |
+| LabelView | `多个图片` `旋转` `缩放` `位移` `生成合成后的位图` | 因为当时写的很乱,并且涉及 `逆矩阵` `矩阵映射`  暂时没勇气重构了~ |
 
 ##com.zone.view.switchbutton包
 | 名字 | 功能  | 优点|
@@ -61,3 +62,5 @@ Step 2. Add the dependency
 | 名字 | 功能  | 优点|
 | :------------: |:---------------:| :-----:|
 | LogUtil | 内部打印log用的 | |
+
+[▲ 回到顶部](#top)
