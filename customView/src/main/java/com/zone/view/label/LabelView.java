@@ -1,4 +1,4 @@
-package com.zone.view.test;
+package com.zone.view.label;
 import java.util.ArrayList;
 import java.util.List;
 import android.content.Context;
@@ -15,9 +15,9 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import com.zone.view.test.util.DragZoomRorateUtils;
 
 import com.zone.customview.ninegridview.R;
+import com.zone.view.label.util.DragZoomRorateUtils;
 
 /**
  * 我最终完美的控件

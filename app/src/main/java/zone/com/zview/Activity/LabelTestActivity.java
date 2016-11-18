@@ -5,7 +5,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.zone.view.test.LabelView;
+import com.zone.view.label.LabelView;
 
 import zone.com.zview.R;
 
