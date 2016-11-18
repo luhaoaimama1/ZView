@@ -67,8 +67,7 @@ public class WaveView2 extends View {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        bind = new DrawBind();
-        bind.bingView(WaveView2.this);
+        DrawBind.bingView(WaveView2.this);
         initShaderPaint();
         initWaveShader();
     }
