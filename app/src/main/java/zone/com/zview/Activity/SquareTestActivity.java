@@ -1,7 +1,9 @@
-package zone.com.zview;
+package zone.com.zview.Activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import zone.com.zview.R;
 
 /**
  * Created by fuzhipeng on 16/8/26.

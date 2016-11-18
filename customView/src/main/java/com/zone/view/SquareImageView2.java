@@ -5,6 +5,8 @@ import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.zone.LogUtil;
+
 //宽是定值,高是warp 则使用 宽,高同理;
 //如果都是wrap,或者都是定制; 都取最小值最为边长;
 
@@ -42,7 +44,7 @@ public class SquareImageView2 extends ImageView {
         else
             //都不是定值,或者都是定值的时候;
             result = Math.min(widthSize, heightSize);
-        System.out.println("widthSize:" + widthSize + "_widthMode:" + (widthMode == MeasureSpec.EXACTLY ? "精确的" : "wrap") + "_heightSize:"
+        LogUtil.i("widthSize:" + widthSize + "_widthMode:" + (widthMode == MeasureSpec.EXACTLY ? "精确的" : "wrap") + "_heightSize:"
                 + heightSize + "——heightMode:" + (heightMode == MeasureSpec.EXACTLY ? "精确的" : "wrap") + "_result:" + result);
 
         if (widthMode == MeasureSpec.AT_MOST && heightMode == MeasureSpec.AT_MOST)

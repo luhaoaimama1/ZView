@@ -1,43 +1,43 @@
-package com.zone.view.test;
+package com.zone.view.base;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.ColorMatrix;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-public class SurfaceViewTemplate extends SurfaceView
+public abstract class SurfaceViewTemplate extends SurfaceView
         implements SurfaceHolder.Callback, Runnable {
 
     // SurfaceHolder
-    private SurfaceHolder mHolder;
+    protected SurfaceHolder mHolder;
     // 用于绘图的Canvas
     private Canvas mCanvas;
     // 子线程标志位
-    private boolean mIsDrawing;
+    protected boolean mIsDrawing;
 
     public SurfaceViewTemplate(Context context) {
         super(context);
-        initView();
+        init();
     }
 
     public SurfaceViewTemplate(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initView();
+        init();
     }
 
     public SurfaceViewTemplate(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        initView();
+        init();
     }
 
-    private void initView() {
+    protected void init() {
         mHolder = getHolder();
         mHolder.addCallback(this);
         setFocusable(true);
         setFocusableInTouchMode(true);
         this.setKeepScreenOn(true);
+        initView();
         //mHolder.setFormat(PixelFormat.OPAQUE);
     }
 
@@ -59,18 +59,28 @@ public class SurfaceViewTemplate extends SurfaceView
     @Override
     public void run() {
         while (mIsDrawing) {
-            draw();
+            drawRunable();
         }
     }
 
-    private void draw() {
+    private void drawRunable() {
         try {
             mCanvas = mHolder.lockCanvas();
-            // draw sth
+            drawRunalbe(mCanvas);
+            // drawRunable sth
         } catch (Exception e) {
         } finally {
             if (mCanvas != null)
                 mHolder.unlockCanvasAndPost(mCanvas);
         }
     }
+
+    /**
+     * surfaceCreated被创建后线程一直走此方法
+     */
+    protected abstract void drawRunalbe(Canvas mCanvas);
+    /**
+     *初始化的时候会走
+     */
+    protected abstract void initView();
 }

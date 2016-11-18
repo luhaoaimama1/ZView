@@ -14,6 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.nineoldandroids.animation.ValueAnimator;
 import com.nineoldandroids.view.ViewHelper;
+import com.zone.LogUtil;
 import com.zone.customview.ninegridview.R;
 import com.zone.zbanner.ViewPagerCircle;
 
@@ -35,7 +36,6 @@ public class ImagePreviewActivity extends Activity implements ViewTreeObserver.O
     private TextView tv_pager;
     private RelativeLayout rootView;
     private PhotoViewPagerAdapterCycle viewPagerAdapter;
-    private boolean debug;
     private int imageHeight, imageWidth;
 
 
@@ -100,7 +100,7 @@ public class ImagePreviewActivity extends Activity implements ViewTreeObserver.O
                 ViewHelper.setScaleY(view, floatEvaluate(fraction, scaleY, 1.0f));
                 ViewHelper.setAlpha(view, fraction);
                 rootView.setBackgroundColor(argbEvalueator(fraction, Color.TRANSPARENT, Color.BLACK));
-                if (debug) {
+                if (LogUtil.printLog) {
                     System.out.println("fraction:" + fraction
                                     + "\t setTranslationX:" + floatEvaluate(fraction, imageInfo.get(currentItem).imageViewX + imageInfo.get(currentItem).imageViewWidth / 2 - view.getWidth() / 2, 0)
                                     + "\t setTranslationY:" + floatEvaluate(fraction, imageInfo.get(currentItem).imageViewY + imageInfo.get(currentItem).imageViewHeight / 2 - view.getHeight() / 2, 0)
