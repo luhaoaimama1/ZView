@@ -14,8 +14,8 @@ import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
-import and.utils.data.file2io2data.HashMapZ;
-import and.utils.reflect.ReflectGenericUtils;
+
+import com.zone.zonelib.ReflectGenericUtils;
 
 //此view是ViewGroup而不是 onDraw那种自定义
 public  abstract  class ViewGroup_Zone<T extends ViewProperty> extends LinearLayout {

@@ -4,7 +4,8 @@ import android.graphics.PointF;
 import android.view.View;
 import android.view.View;
 import android.widget.LinearLayout;
-import and.utils.data.file2io2data.HashMapZ;
+
+import com.zone.zonelib.HashMapZ;
 
 public class ViewProperty {
     public ViewGroup_Zone mViewGroup_Zone;

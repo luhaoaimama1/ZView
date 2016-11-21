@@ -17,10 +17,10 @@ import com.nineoldandroids.view.ViewHelper;
 import com.zone.LogUtil;
 import com.zone.customview.ninegridview.R;
 import com.zone.zbanner.ViewPagerCircle;
+import com.zone.zonelib.MeasureUtils;
 
 import java.util.List;
 
-import and.utils.activity_fragment_ui.MeasureUtils;
 
 /**
  * Created by Administrator on 2016/4/12.
