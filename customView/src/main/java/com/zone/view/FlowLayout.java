@@ -15,7 +15,6 @@ import android.view.View;
 
 public class FlowLayout extends ViewGroup_Zone<ViewProperty_FlowLayout> {
     private int maxLine;
-    private List<ViewProperty_FlowLayout> childList;
     private boolean center_vertical;
 
     public FlowLayout(Context context, AttributeSet attrs, int defStyle) {
@@ -62,7 +61,8 @@ public class FlowLayout extends ViewGroup_Zone<ViewProperty_FlowLayout> {
     }
 
     @Override
-    public PointF getViewLocation(List<ViewProperty_FlowLayout> childList, ViewProperty_FlowLayout viewAttr, int index, MeasureSpecMy mMeasureSpecMy) {
+    public PointF getViewLocation(List<ViewProperty_FlowLayout> childList, ViewProperty_FlowLayout viewAttr, int index,
+                                  MeasureSpecMy mMeasureSpecMy) {
         if (index == 0) {
             return new PointF(0, 0);
         } else {
@@ -129,7 +129,8 @@ public class FlowLayout extends ViewGroup_Zone<ViewProperty_FlowLayout> {
         for (int i = 0; i < maxYlist.size(); i++) {
             for (ViewProperty_FlowLayout viewProperty : childList) {
                 if (viewProperty.horizontalNum == i)
-                    viewProperty.offsetExtra = new PointF(0, (maxYlist.get(i) - viewProperty.view.getHeight()) / 2);
+                    viewProperty.offsetExtra = new PointF(0,
+                            (maxYlist.get(i) - viewProperty.view.getHeight()) / 2);
             }
         }
     }

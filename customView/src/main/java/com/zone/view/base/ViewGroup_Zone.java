@@ -22,7 +22,7 @@ public  abstract  class ViewGroup_Zone<T extends ViewProperty> extends LinearLay
     //offset是关于padding的偏移
     private int mMeasureWith, mMeasureHeight,mViewWidth,mViewHeight;
     int offsetX, offsetY;
-    private List<T> childList = new ArrayList<>();
+    protected List<T> childList = new ArrayList<>();
     private MeasureSpecMy mMeasureSpecMy;
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -127,11 +127,12 @@ public  abstract  class ViewGroup_Zone<T extends ViewProperty> extends LinearLay
         }
         if (mMeasureSpecMy.heightMode == MeasureSpec.EXACTLY) {
             offsetY = getPaddingTop();
+            mMeasureHeight = mMeasureSpecMy.heightSize;
         } else {
             offsetY = getPaddingTop();
             mMeasureHeight = mMeasureHeight + getPaddingTop() + getPaddingBottom();
-            if (mMeasureSpecMy.heightSize > 0 && mMeasureHeight > mMeasureSpecMy.heightSize)
-                mMeasureHeight = mMeasureSpecMy.heightSize;
+//            if (mMeasureSpecMy.heightSize > 0 && mMeasureHeight > mMeasureSpecMy.heightSize)
+//                mMeasureHeight = mMeasureSpecMy.heightSize;
         }
     }
 

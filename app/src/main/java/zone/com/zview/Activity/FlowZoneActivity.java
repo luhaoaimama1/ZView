@@ -14,11 +14,12 @@ public class FlowZoneActivity extends BaseActivity {
     @Override
     public void setContentView() {
         setContentView(R.layout.fl_test);
+//        setContentView(R.layout.main);
     }
 
     @Override
     public void findIDs() {
-        flowLayoutZone1=(FlowLayout)findViewById(R.id.flowLayoutZone1);
+//        flowLayoutZone1=(FlowLayout)findViewById(R.id.flow);
 //        flowLayoutZone1.setMaxLine(1);
 //        flowLayoutZone1.setMaxLine(2);
     }
