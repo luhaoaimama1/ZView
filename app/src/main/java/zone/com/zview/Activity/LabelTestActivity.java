@@ -5,6 +5,8 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Toast;
+
 import com.zone.view.label.LabelView;
 
 import zone.com.zview.R;
@@ -23,6 +25,13 @@ public class LabelTestActivity extends Activity implements OnClickListener{
 				getResources(), R.drawable.ic_launcher));
 		//设置边框是否显隐
 //		labelView1.setRimVisibility(false);
+		labelView1.setRimVisibility(true);
+		labelView1.addOnDoubleTapListener(new LabelView.OnDoubleTapListener() {
+			@Override
+			public void onDoubleTap(int index) {
+				System.out.println("双击666+index："+index);
+			}
+		});
 	}
 	@Override
 	public void onClick(View v) {
