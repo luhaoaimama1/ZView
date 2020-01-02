@@ -1,19 +1,21 @@
 package com.zone.view.ninegridview.preview;
 
+import android.animation.Animator;
+import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.view.ViewHelper;
+
+import androidx.viewpager.widget.ViewPager;
+
 import com.zone.LogUtil;
 import com.zone.customview.ninegridview.R;
 import com.zone.zbanner.ViewPagerCircle;
@@ -91,22 +93,22 @@ public class ImagePreviewActivity extends Activity implements ViewTreeObserver.O
                 // 我明白了 是两个图片的中心点 对齐  并且大小一样的时候 这样才算重合 而不是 左上角重合
                 //imageInfo.get(currentItem).imageViewX 是左上角点；+ imageInfo.get(currentItem).imageViewWidth / 2 就是左上角点对其 图片的中心点；
                 //- view.getWidth() / 2最后 就是现在图片的中心点对其图片的中心点
-                ViewHelper.setTranslationX(view, floatEvaluate(fraction, imageInfo.get(currentItem).imageViewX + imageInfo.get(currentItem).imageViewWidth / 2 - view.getWidth() / 2, 0));
-                ViewHelper.setTranslationY(view, floatEvaluate(fraction, imageInfo.get(currentItem).imageViewY + imageInfo.get(currentItem).imageViewHeight / 2 - view.getHeight() / 2, 0));
+                view.setTranslationX(floatEvaluate(fraction, imageInfo.get(currentItem).imageViewX + imageInfo.get(currentItem).imageViewWidth / 2 - view.getWidth() / 2, 0));
+                view.setTranslationY(floatEvaluate(fraction, imageInfo.get(currentItem).imageViewY + imageInfo.get(currentItem).imageViewHeight / 2 - view.getHeight() / 2, 0));
                 //主要是  imageWidth=0的时候取0
-                float scaleX=(imageWidth!=0?(float) imageInfo.get(currentItem).getImageViewWidth() / imageWidth:0);
-                float scaleY=imageHeight!=0?(float) imageInfo.get(currentItem).getImageViewHeight() / imageHeight :0;
-                ViewHelper.setScaleX(view, floatEvaluate(fraction, scaleX, 1.0f));
-                ViewHelper.setScaleY(view, floatEvaluate(fraction, scaleY, 1.0f));
-                ViewHelper.setAlpha(view, fraction);
+                float scaleX = (imageWidth != 0 ? (float) imageInfo.get(currentItem).getImageViewWidth() / imageWidth : 0);
+                float scaleY = imageHeight != 0 ? (float) imageInfo.get(currentItem).getImageViewHeight() / imageHeight : 0;
+                view.setScaleX(floatEvaluate(fraction, scaleX, 1.0f));
+                view.setScaleY(floatEvaluate(fraction, scaleY, 1.0f));
+                view.setAlpha(fraction);
                 rootView.setBackgroundColor(argbEvalueator(fraction, Color.TRANSPARENT, Color.BLACK));
                 if (LogUtil.printLog) {
                     System.out.println("fraction:" + fraction
-                                    + "\t setTranslationX:" + floatEvaluate(fraction, imageInfo.get(currentItem).imageViewX + imageInfo.get(currentItem).imageViewWidth / 2 - view.getWidth() / 2, 0)
-                                    + "\t setTranslationY:" + floatEvaluate(fraction, imageInfo.get(currentItem).imageViewY + imageInfo.get(currentItem).imageViewHeight / 2 - view.getHeight() / 2, 0)
-                                    + "\t setScaleX:" + floatEvaluate(fraction, scaleX, 1.0f)
-                                    + "\t setScaleY:" + floatEvaluate(fraction,scaleY, 1.0f)
-                                    + "\t setBackgroundColor:" + argbEvalueator(fraction, Color.TRANSPARENT, Color.BLACK)
+                            + "\t setTranslationX:" + floatEvaluate(fraction, imageInfo.get(currentItem).imageViewX + imageInfo.get(currentItem).imageViewWidth / 2 - view.getWidth() / 2, 0)
+                            + "\t setTranslationY:" + floatEvaluate(fraction, imageInfo.get(currentItem).imageViewY + imageInfo.get(currentItem).imageViewHeight / 2 - view.getHeight() / 2, 0)
+                            + "\t setScaleX:" + floatEvaluate(fraction, scaleX, 1.0f)
+                            + "\t setScaleY:" + floatEvaluate(fraction, scaleY, 1.0f)
+                            + "\t setBackgroundColor:" + argbEvalueator(fraction, Color.TRANSPARENT, Color.BLACK)
                     );
                 }
             }
@@ -137,8 +139,8 @@ public class ImagePreviewActivity extends Activity implements ViewTreeObserver.O
         MeasureUtils.measureImage(imageView, new MeasureUtils.ImageListener() {
             @Override
             public void imageShowProperty(ImageView iv, float left, float top, int imageShowX, int imageShowY) {
-                imageWidth=  imageShowX;
-                imageHeight=  imageShowY;
+                imageWidth = imageShowX;
+                imageHeight = imageShowY;
             }
         });
     }
@@ -170,15 +172,15 @@ public class ImagePreviewActivity extends Activity implements ViewTreeObserver.O
      * 进场动画过程监听
      */
     private void addListener(ValueAnimator valueAnimator, final boolean isEnter) {
-        valueAnimator.addListener(new com.nineoldandroids.animation.Animator.AnimatorListener() {
+        valueAnimator.addListener(new Animator.AnimatorListener() {
             @Override
-            public void onAnimationStart(com.nineoldandroids.animation.Animator animation) {
+            public void onAnimationStart(Animator animation) {
                 if (isEnter)
                     rootView.setBackgroundColor(0x0);
             }
 
             @Override
-            public void onAnimationEnd(com.nineoldandroids.animation.Animator animation) {
+            public void onAnimationEnd(Animator animation) {
                 if (!isEnter) {
                     finish();
                     overridePendingTransition(0, 0);
@@ -186,12 +188,12 @@ public class ImagePreviewActivity extends Activity implements ViewTreeObserver.O
             }
 
             @Override
-            public void onAnimationCancel(com.nineoldandroids.animation.Animator animation) {
+            public void onAnimationCancel(Animator animation) {
 
             }
 
             @Override
-            public void onAnimationRepeat(com.nineoldandroids.animation.Animator animation) {
+            public void onAnimationRepeat(Animator animation) {
 
             }
         });

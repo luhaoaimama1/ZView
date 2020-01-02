@@ -1,15 +1,16 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.2"
+    compileSdkVersion 28
     defaultConfig {
         applicationId "zone.com.zview"
-        minSdkVersion 16
-        targetSdkVersion 24
+        targetSdkVersion 28
         versionCode 1
+        minSdkVersion 15
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -20,13 +21,25 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('androidx.test.espresso:espresso-core:3.1.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:24.2.1'
-    testCompile 'junit:junit:4.12'
-    compile 'com.github.luhaoaimama1:ZAdapter:1.1.0'
-    compile 'com.github.luhaoaimama1:zone-sdk:1.0.88'
-    compile project(':customView')
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.12'
+    implementation'com.github.luhaoaimama1:ZAdapter3:1.0.94'
+    implementation 'com.github.luhaoaimama1:zone-sdk:2.2.1'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0-beta01'
+    implementation project(':customView')
+    compile "androidx.core:core-ktx:+"
+    implementation "io.reactivex:rxjava:1.2.5"
+    implementation "io.reactivex:rxandroid:1.2.1"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
+}
+configurations {
+    //排除module
+    compile.exclude group: 'org.jetbrains', module: 'annotations'
 }

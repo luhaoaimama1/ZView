@@ -2,7 +2,6 @@ package com.zone.view.label.util;
 
 import android.graphics.PointF;
 import android.graphics.RectF;
-import android.util.FloatMath;
 
 public class DragZoomRorateUtils {
 
@@ -33,7 +32,7 @@ public class DragZoomRorateUtils {
     public static float distance(PointF start, PointF end) {
         float x = start.x - end.x;
         float y = start.y - end.y;
-        return FloatMath.sqrt(x * x + y * y);
+        return (float) Math.sqrt(x * x + y * y);
     }
 
     // 计算两个触摸点之间的角度
