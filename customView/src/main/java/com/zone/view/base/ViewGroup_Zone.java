@@ -16,7 +16,8 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 
-import com.zone.zonelib.ReflectGenericUtils;
+import com.zone.lib.utils.reflect.ReflectGenericUtils;
+
 
 //此view是ViewGroup而不是 onDraw那种自定义
 public  abstract  class ViewGroup_Zone<T extends ViewProperty> extends LinearLayout {

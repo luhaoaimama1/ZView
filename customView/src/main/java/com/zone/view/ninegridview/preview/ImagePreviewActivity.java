@@ -16,10 +16,10 @@ import android.widget.TextView;
 
 import androidx.viewpager.widget.ViewPager;
 
-import com.zone.LogUtil;
+import com.zone.LogCustomView;
 import com.zone.customview.ninegridview.R;
+import com.zone.lib.utils.activity_fragment_ui.MeasureUtils;
 import com.zone.zbanner.ViewPagerCircle;
-import com.zone.zonelib.MeasureUtils;
 
 import java.util.List;
 
@@ -102,15 +102,13 @@ public class ImagePreviewActivity extends Activity implements ViewTreeObserver.O
                 view.setScaleY(floatEvaluate(fraction, scaleY, 1.0f));
                 view.setAlpha(fraction);
                 rootView.setBackgroundColor(argbEvalueator(fraction, Color.TRANSPARENT, Color.BLACK));
-                if (LogUtil.printLog) {
-                    System.out.println("fraction:" + fraction
+                LogCustomView.INSTANCE.d("fraction:" + fraction
                             + "\t setTranslationX:" + floatEvaluate(fraction, imageInfo.get(currentItem).imageViewX + imageInfo.get(currentItem).imageViewWidth / 2 - view.getWidth() / 2, 0)
                             + "\t setTranslationY:" + floatEvaluate(fraction, imageInfo.get(currentItem).imageViewY + imageInfo.get(currentItem).imageViewHeight / 2 - view.getHeight() / 2, 0)
                             + "\t setScaleX:" + floatEvaluate(fraction, scaleX, 1.0f)
                             + "\t setScaleY:" + floatEvaluate(fraction, scaleY, 1.0f)
                             + "\t setBackgroundColor:" + argbEvalueator(fraction, Color.TRANSPARENT, Color.BLACK)
                     );
-                }
             }
         });
         addListener(mValueAnimator, isEnter);

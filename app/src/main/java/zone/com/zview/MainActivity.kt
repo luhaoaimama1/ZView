@@ -5,15 +5,27 @@ import android.content.Intent
 import android.graphics.Color
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.zone.LogCustomView
 import com.zone.adapter3.QuickRcvAdapter
 import com.zone.adapter3.bean.Holder
 import com.zone.adapter3.bean.ViewDelegates
+import com.zone.lib.LogZSDK
+import com.zone.lib.ZLogger
 import com.zone.lib.base.controller.activity.BaseFeatureActivity
 
 import com.zone.lib.base.controller.activity.controller.SwipeBackActivityController
 import kotlinx.android.synthetic.main.a_main.*
 
 class MainActivity : BaseFeatureActivity() {
+    companion object {
+        //还原最开始的log配置  如果某次配置一次特殊的 打印完后的记得还原配置
+        @JvmStatic
+        fun initLogger() {
+            ZLogger.logLevelList.clear()
+            ZLogger.mayLoggerList.clear()
+            ZLogger.mayLoggerList.addAll(listOf<ZLogger>(LogCustomView, LogZSDK))
+        }
+    }
 
     override fun initDefaultConifg() {
         unRegisterPrestener(SwipeBackActivityController::class.java)
@@ -21,6 +33,7 @@ class MainActivity : BaseFeatureActivity() {
 
     override fun setContentView() {
         setContentView(R.layout.a_main)
+        initLogger()
 
     }
 

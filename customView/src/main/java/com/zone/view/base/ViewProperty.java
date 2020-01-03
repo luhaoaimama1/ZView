@@ -2,10 +2,10 @@ package com.zone.view.base;
 
 import android.graphics.PointF;
 import android.view.View;
-import android.view.View;
 import android.widget.LinearLayout;
 
-import com.zone.zonelib.HashMapZ;
+import com.zone.lib.utils.data.file2io2data.HashMapZ;
+
 
 public class ViewProperty {
     public ViewGroup_Zone mViewGroup_Zone;
