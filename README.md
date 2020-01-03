@@ -18,6 +18,7 @@ allprojects {
 Step 2. Add the dependency
 
 > compile 'com.github.luhaoaimama1:ZView:[Latest release](https://github.com/luhaoaimama1/ZView/releases)'
+> 非andoridX compile 'com.github.luhaoaimama1:ZView:1.0.36' 分支：notAndroidX
 
 #功能介绍
 
